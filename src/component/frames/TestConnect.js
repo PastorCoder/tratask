@@ -104,11 +104,7 @@ function TestConnect() {
     };
     
 
-    useEffect(() => {
-      // console.log(AMOUNT.toString());
-      setup();
-      console.log("address is :", address);
-    }, [address]);
+   
 
  
 
