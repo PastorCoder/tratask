@@ -23,7 +23,7 @@ import {
 } from "./recoil/WalletAtom";
 
 import WalletsModal from "./component/frames/WalletsModal";
-import TalismanChosen from "./component/frames/TalismanChosen";
+// import TalismanChosen from "./component/frames/TalismanChosen";
 import NovaWalletLogo from "./component/assets/Nova-Wallet-Logo-Update.png";
 import TalismanLogo from "./component/assets/Talisman-Logo.png";
 import polkadotJsLogo from "./component/assets/polkadot{.js} Wallet.jpg";
@@ -33,7 +33,7 @@ import PolkagateLogo from "./component/assets/polkagate.jpg";
 import "./component/styles/connect.css"
 
 const NAME = "GmOrDie";
-const period = "MORNING | NIGHT | MIDONE | MIDTWO";
+// const period = "MORNING | NIGHT | MIDONE | MIDTWO";
 const AMOUNT = 0;
 // const AMOUNT = new BN(10).mul(new BN(10).pow(new BN(10)));
 const GM_WEB_SUCKET = "wss://ws.gm.bldnodes.org/";
@@ -44,7 +44,7 @@ function Connect() {
   const [api, setApi] = useState();
   const [accounts, setAccounts] = useState([]);
   const [selectedAccount, setSelectedAccount] = useState();
-  const [period, setPeriod] = useState();
+  // const [period, setPeriod] = useState();
   const [showModal, setShowModal] = useState(false);
   const [balance, setBalance] = useState();
   const [address, setAddress] = useState();
@@ -88,19 +88,7 @@ function Connect() {
     setShowModal(showModal);
   };
 
-  async function handleShowName() {
-    const provider = new WsProvider(GM_WEB_SUCKET);
-    const oneApi = await ApiPromise.create({ provider });
-    const [chain, nodeName, nodeVersion] = await Promise.all([
-      oneApi.rpc.system.chain(),
-      oneApi.rpc.system.name(),
-      oneApi.rpc.system.version(),
-    ]);
-    await oneApi.connect();
-    console.log(
-      `You are connected to chain ${chain} using ${nodeName} v${nodeVersion}`
-    );
-  }
+
 
   const handleTalisman = () => {
     const installedWallets = getWallets().filter((wallet) => wallet.installed);
@@ -148,25 +136,7 @@ function Connect() {
 
   // address is : 5DaEWa1fgLCQtUzNpAKrCxdjwfzuVaXgjbJNpr2CKR4WCnb9
 
-  useEffect(() => {
-    if (!api) return;
-
-    (async () => {
-      const period = (
-        await api.query.currencies.currentTimePeriod()
-      ).toPrimitive();
-
-      const parsedPeriod = period.toUpperCase();
-      setPeriod(parsedPeriod);
-      console.log(period);
-    })();
-    // (
-    //   async () => {
-    //     const time = await api.query.timestamp.now();
-    //     console.log(time.toPrimitive())
-    //   }
-    // )();
-  }, [api]);
+ 
 
   useEffect(() => {
     if (!api) return;
