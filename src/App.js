@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-// import Connect from "./component/pages/Connect";
+import Connect from "./component/pages/Index";
 // import TalismanChosen from "./component/pages/TalismanChosen";
 // import Transfer from "./component/pages/Transfer";
 import RoutePage from "./component/pages/RoutePages";
@@ -13,7 +13,8 @@ function App() {
         {/**<Connect />
         <TalismanChosen /> */}
         <RecoilRoot>
-          <RoutePage />
+          {/**  <RoutePage /> */}
+          <Connect />
         </RecoilRoot>
       </BrowserRouter>
     </div>
