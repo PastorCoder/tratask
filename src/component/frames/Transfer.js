@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 // import { balanceState, addressState } from "../../recoil/WalletAtom";
-// import Connect from "./Connect";
+import Connect from "./Connect";
 // import { useRecoilState } from "recoil";
 import "../styles/chosenWallet.css";
 
@@ -43,7 +43,7 @@ console.log(`Submitted with hash ${txHash}`);
 
   return (
     <div>
-      {/**<Connect /> */}
+      <Connect /> 
       <div className="talisman-card">
         <span>
           <label htmlFor="amount">Amount </label>

@@ -13,14 +13,14 @@ import {
 } from "@polkadot/extension-dapp";
 // import { InjectedAccountWithMeta } from "@polkadot/extension-inject/types";
 import BN from "bn.js";
-import { useRecoilState } from "recoil";
-import {
-  balanceState,
-  walletNameState,
-  chainState,
-  nodeNameState,
-  addressState,
-} from "../../recoil/WalletAtom";
+// import { useRecoilState } from "recoil";
+// import {
+//   balanceState,
+//   walletNameState,
+//   chainState,
+//   nodeNameState,
+//   addressState,
+// } from "../../recoil/WalletAtom";
 
 import WalletsModal from "./WalletsModal";
 import TalismanChosen from "./TalismanChosen";
@@ -46,10 +46,10 @@ function Connect() {
   const [period, setPeriod] = useState();
   const [showModal, setShowModal] = useState(false);
   const [balance, setBalance] = useState();
-  const [address, setAddress] = useRecoilState(addressState);
-  const [walletName, setWalletName] = useRecoilState(walletNameState);
-  const [chain, setChain] = useRecoilState(chainState);
-  const [nodeName, setNodeName] = useRecoilState(nodeNameState);
+  const [address, setAddress] = useState();
+  const [walletName, setWalletName] = useState();
+  const [chain, setChain] = useState();
+  const [nodeName, setNodeName] = useState();
 
   const handleModal = () => setShowModal(!showModal);
 
