@@ -1,23 +1,23 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import Connect from "./component/frames/Connect";
+// import Connect from "./component/pages/Connect";
 // import TalismanChosen from "./component/pages/TalismanChosen";
 // import Transfer from "./component/pages/Transfer";
-import RoutePage from "./component/pages/RoutePages";
+// import RoutePage from "./component/pages/RoutePages";
+import Test from "./component/pages/Test";
 import { RecoilRoot } from "recoil";
 
 function App() {
   return (
     <div>
-      {/**<BrowserRouter> */}
-      {/**<Connect />
+      <BrowserRouter>
+        {/**<Connect />
         <TalismanChosen /> */}
-      {/**<RecoilRoot> */}
-      {/**  <RoutePage /> */}
-      <Connect /> 
-      {/**</RecoilRoot> */}
-      {/**</BrowserRouter> */}
-      <h1>This is a test</h1>
+        <RecoilRoot>
+          <Test />
+          {/**<RoutePage /> */}
+        </RecoilRoot>
+      </BrowserRouter>
     </div>
   );
 }
