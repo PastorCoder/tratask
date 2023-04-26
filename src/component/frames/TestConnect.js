@@ -54,7 +54,25 @@ function TestConnect() {
   const handleModal = () => setShowModal(!showModal);
 
 
- 
+  const handleConnection = async () => {
+    const extensions = await web3Enable(NAME);
+
+    if (!extensions) {
+      throw Error("No_EXTENSION_FOUND");
+    }
+
+    const allAccounts = await web3Accounts();
+
+    if (allAccounts.length === 0) {
+      setSelectedAccount(allAccounts[0]);
+    }
+
+    setWalletName(allAccounts[0].meta.source);
+
+    setAccounts(allAccounts);
+
+    setShowModal(showModal);
+  };
 
  
 
@@ -69,9 +87,7 @@ function TestConnect() {
             Connect Wallet
           </button>
         ) : (
-          <button  className="disconnect-btn">
-            Disconnect Wallet
-          </button>
+          <button className="disconnect-btn">Disconnect Wallet</button>
         )}
 
         {/**
@@ -111,29 +127,33 @@ function TestConnect() {
             src={TalismanLogo}
             className="select-wallet"
             alt="Talisman  Wallet"
+            onClick={handleConnection}
           />
           <img
             src={polkadotJsLogo}
             className="select-wallet"
             alt="polkadot{.js} Wallet"
+            onClick={handleConnection}
           />
 
           <img
             src={NovaWalletLogo}
             className="select-wallet"
             alt="Nova Wallet"
+            onClick={handleConnection}
           />
           <img
             src={PolkagateLogo}
             className="select-wallet"
             alt="Polkagate Wallet"
+            onClick={handleConnection}
           />
         </WalletsModal>
       </div>
 
       {accounts.length > 0 && !selectedAccount ? (
         <div className="select-account select-account-card">
-          <select className="select-option" >
+          <select className="select-option">
             <option value="" disabled selected hidden>
               Choose your account
             </option>
