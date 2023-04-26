@@ -12,7 +12,7 @@ import {
   web3FromAddress,
 } from "@polkadot/extension-dapp";
 // import { InjectedAccountWithMeta } from "@polkadot/extension-inject/types";
-import BN from "bn.js";
+// import BN from "bn.js";
 // import { useRecoilState } from "recoil";
 // import {
 //   balanceState,
@@ -87,19 +87,7 @@ function Connect() {
     setShowModal(showModal);
   };
 
-  async function handleShowName() {
-    const provider = new WsProvider(GM_WEB_SUCKET);
-    const oneApi = await ApiPromise.create({ provider });
-    const [chain, nodeName, nodeVersion] = await Promise.all([
-      oneApi.rpc.system.chain(),
-      oneApi.rpc.system.name(),
-      oneApi.rpc.system.version(),
-    ]);
-    await oneApi.connect();
-    console.log(
-      `You are connected to chain ${chain} using ${nodeName} v${nodeVersion}`
-    );
-  }
+  
 
   const handleTalisman = () => {
     const installedWallets = getWallets().filter((wallet) => wallet.installed);
@@ -215,10 +203,7 @@ function Connect() {
             Connect Wallet
           </button>
         ) : (
-          <button
-            onClick={handleDisconnect}
-            className="disconnect-btn"
-          >
+          <button onClick={handleDisconnect} className="disconnect-btn">
             Disconnect Wallet
           </button>
         )}
@@ -309,10 +294,17 @@ function Connect() {
             <span className="wallet-name"> {walletName} </span>
           </span>
           <hr />
+          {/**
           <span>
             Your current balance is :{" "}
-            <span className="balance">{balance?.toNumber()} Dot </span>
+            <span className="balance">{balance?.toString()} Dot </span>
           </span>
+         */}
+
+          <div>
+            <span>Your current balance is :</span>
+            <span>{ balance.toString()}</span>
+          </div>
 
           {balance > 0 ? (
             <Link to="/transfer-fund">
