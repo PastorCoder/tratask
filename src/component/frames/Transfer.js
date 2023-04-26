@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { balanceState, addressState } from "../../recoil/WalletAtom";
-import Connect from "./Connect";
-import { useRecoilState } from "recoil";
+// import { balanceState, addressState } from "../../recoil/WalletAtom";
+// import Connect from "./Connect";
+// import { useRecoilState } from "recoil";
 import "../styles/chosenWallet.css";
 
 const Transfer = () => {
@@ -13,7 +13,7 @@ const Transfer = () => {
    const [api, setApi] = useState();
    const [accounts, setAccounts] = useState([]);
   const [selectedAccount, setSelectedAccount] = useState();
-    const [address, setAddress] = useState(addressState);
+    const [address, setAddress] = useState();
   
 
   const handleTransfer = async () => {
@@ -43,7 +43,7 @@ console.log(`Submitted with hash ${txHash}`);
 
   return (
     <div>
-      <Connect />
+      {/**<Connect /> */}
       <div className="talisman-card">
         <span>
           <label htmlFor="amount">Amount </label>
@@ -72,7 +72,10 @@ console.log(`Submitted with hash ${txHash}`);
           <span className="form-balance-num">{balance} Dot </span>
         </span>
 
-        <button onClick={handleTransfer} className={`${amount === 0 ? "no-money" : "send-btn"}`}>
+        <button
+          onClick={handleTransfer}
+          className={`${amount === 0 ? "no-money" : "send-btn"}`}
+        >
           Send
         </button>
       </div>
