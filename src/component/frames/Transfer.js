@@ -43,7 +43,10 @@ console.log(`Submitted with hash ${txHash}`);
 
   return (
     <div>
-      <Connect /> 
+      {/**<Connect />  */}
+      <div style={{backgroundColor: "red"}}>
+        <button>Connect</button>
+      </div>
       <div className="talisman-card">
         <span>
           <label htmlFor="amount">Amount </label>

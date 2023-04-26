@@ -6,14 +6,11 @@ import TestFrame from "./component/frames/TestFrame"
 function App() {
   return (
     <div>
-      
-        {/**<Connect />
+      {/**<Connect />
         <TalismanChosen /> */}
-        
-     
-      <TestFrame />
-       
-      
+      <BrowserRouter>
+        <RoutePage />
+      </BrowserRouter>
     </div>
   );
 }

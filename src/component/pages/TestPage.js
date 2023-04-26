@@ -1,16 +1,17 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import RoutePage from "./component/pages/RoutePages";
+// import RoutePage from "./component/pages/RoutePages";
+import TestFrame from "../frames/TestFrame";
 
-function App() {
+function Test() {
   return (
     <div>
       {/**<Connect />
         <TalismanChosen /> */}
 
-      <RoutePage />
+      <TestFrame />
     </div>
   );
 }
 
-export default App;
+export default Test;
