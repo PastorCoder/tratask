@@ -46,7 +46,7 @@ console.log(`Submitted with hash ${txHash}`);
       <Connect />
       <div className="talisman-card">
         <span>
-          <label for="amount">Amount </label>
+          <label htmlFor="amount">Amount </label>
           <input
             type="number"
             id="amount"
@@ -57,7 +57,7 @@ console.log(`Submitted with hash ${txHash}`);
           <br />
         </span>
         <span>
-          <label for="amount">Wallet </label>
+          <label htmlFor="amount">Wallet </label>
           <input
             type="text"
             id="wallet"
@@ -72,7 +72,7 @@ console.log(`Submitted with hash ${txHash}`);
           <span className="form-balance-num">{balance} Dot </span>
         </span>
 
-        <button className={`${amount === 0 ? "no-money" : "send-btn"}`}>
+        <button onClick={handleTransfer} className={`${amount === 0 ? "no-money" : "send-btn"}`}>
           Send
         </button>
       </div>
