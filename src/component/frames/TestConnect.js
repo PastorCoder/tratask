@@ -72,7 +72,22 @@ function TestConnect() {
     setAccounts(allAccounts);
 
     setShowModal(showModal);
-  };
+    };
+    
+
+     const handleAccountSelection = async (e) => {
+       const selectedAddress = e.target.value;
+
+       const account = accounts.find(
+         (account) => account.address === selectedAddress
+       );
+
+       if (!account) {
+         throw Error("NO_ACCOUNT_FOUND");
+       }
+
+       setSelectedAccount(account);
+     };
 
  
 
@@ -153,7 +168,7 @@ function TestConnect() {
 
       {accounts.length > 0 && !selectedAccount ? (
         <div className="select-account select-account-card">
-          <select className="select-option">
+          <select className="select-option" onChange={handleAccountSelection}>
             <option value="" disabled selected hidden>
               Choose your account
             </option>
