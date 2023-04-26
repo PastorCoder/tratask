@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
-import Connect from "./component/pages/Index";
+import Connect from "./component/frames/Connect";
 // import TalismanChosen from "./component/pages/TalismanChosen";
 // import Transfer from "./component/pages/Transfer";
 import RoutePage from "./component/pages/RoutePages";
