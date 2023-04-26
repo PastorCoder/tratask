@@ -47,9 +47,7 @@ console.log(`Submitted with hash ${txHash}`);
       
       
       <TestConnect />  
-      <div style={{backgroundColor: "red"}}>
-        <button>Connect</button>
-      </div>
+      
 
 
       <div className="talisman-card">
