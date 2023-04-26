@@ -89,7 +89,19 @@ function TestConnect() {
        setSelectedAccount(account);
     };
     
-    
+     const setup = async () => {
+    const wsProvider = new WsProvider(GM_WEB_SUCKET);
+    const api = await ApiPromise.create({ provider: wsProvider });
+    setApi(api);
+    // console.log(api);
+    const [chain, nodeName] = await Promise.all([
+      api.rpc.system.chain(),
+      api.rpc.system.name(),
+    ]);
+    setChain(chain);
+    setNodeName(nodeName);
+    console.log(`You are connected to chain ${chain} using ${nodeName} `);
+  };
 
  
 
