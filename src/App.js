@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+// import Connect from "./component/pages/Connect";
+// import TalismanChosen from "./component/pages/TalismanChosen";
+// import Transfer from "./component/pages/Transfer";
+import RoutePage from "./component/pages/RoutePages";
+import { RecoilRoot } from "recoil";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        {/**<Connect />
+        <TalismanChosen /> */}
+        <RecoilRoot>
+          <RoutePage />
+        </RecoilRoot>
+      </BrowserRouter>
     </div>
   );
 }
