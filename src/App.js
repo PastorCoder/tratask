@@ -14,7 +14,7 @@ function App() {
         <TalismanChosen /> */}
       {/**<RecoilRoot> */}
       {/**  <RoutePage /> */}
-      {/**<Connect /> */}
+      <Connect /> 
       {/**</RecoilRoot> */}
       {/**</BrowserRouter> */}
       <h1>This is a test</h1>
