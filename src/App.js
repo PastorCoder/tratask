@@ -9,14 +9,15 @@ import { RecoilRoot } from "recoil";
 function App() {
   return (
     <div>
-      <BrowserRouter>
-        {/**<Connect />
+      {/**<BrowserRouter> */}
+      {/**<Connect />
         <TalismanChosen /> */}
-        <RecoilRoot>
-          {/**  <RoutePage /> */}
-          <Connect />
-        </RecoilRoot>
-      </BrowserRouter>
+      {/**<RecoilRoot> */}
+      {/**  <RoutePage /> */}
+      {/**<Connect /> */}
+      {/**</RecoilRoot> */}
+      {/**</BrowserRouter> */}
+      <h1>This is a test</h1>
     </div>
   );
 }
