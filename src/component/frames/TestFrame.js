@@ -5,9 +5,7 @@ import { RecoilRoot } from "recoil";
 function Test() {
   return (
     <div>
-      <RecoilRoot>
         <Transfer />
-      </RecoilRoot>
     </div>
   );
 }

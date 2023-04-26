@@ -13,7 +13,7 @@ const Transfer = () => {
    const [api, setApi] = useState();
    const [accounts, setAccounts] = useState([]);
   const [selectedAccount, setSelectedAccount] = useState();
-    const [address, setAddress] = useRecoilState(addressState);
+    const [address, setAddress] = useState(addressState);
   
 
   const handleTransfer = async () => {
