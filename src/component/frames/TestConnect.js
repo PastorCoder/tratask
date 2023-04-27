@@ -110,9 +110,12 @@ function TestConnect() {
 
   useEffect(() => {
      const setup = async () => {
-       const wsProvider = new WsProvider(POLKADOT_WS);
+       // Construct
+       const wsProvider = new WsProvider("wss://rpc.polkadot.io");
        const api = await ApiPromise.create({ provider: wsProvider });
-       setApi(api);
+
+       // Do something
+       console.log(api.genesisHash.toHex());
      };
   }, []);
 
