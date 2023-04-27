@@ -6,7 +6,7 @@ import { RecoilRoot } from "recoil";
 function Test() {
   return (
     <div>
-        <Transfer />
+      <TestConnect />
     </div>
   );
 }

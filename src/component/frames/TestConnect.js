@@ -89,7 +89,20 @@ function TestConnect() {
        setSelectedAccount(account);
     };
     
-    
+     useEffect(() => {
+       if (!api) return;
+       if (!selectedAccount) return;
+
+       api.query.system.account(
+         selectedAccount.address,
+         ({ data: { free } }) => {
+           setBalance(free);
+         }
+       );
+
+       setAddress(selectedAccount.address);
+       // console.log(balance);
+     }, [api, selectedAccount, setBalance]);
 
  
 
