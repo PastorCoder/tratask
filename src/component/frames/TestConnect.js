@@ -35,7 +35,7 @@ const NAME = "GmOrDie";
 const period = "MORNING | NIGHT | MIDONE | MIDTWO";
 const AMOUNT = 0;
 // const AMOUNT = new BN(10).mul(new BN(10).pow(new BN(10)));
-const GM_WEB_SUCKET = "wss://ws.gm.bldnodes.org/";
+const GM_WEB_SOCKET = "wss://ws.gm.bldnodes.org/";
 const WS_SECOND_ENDPOINT = "wss://rpc.polkadot.io";
 // const WS_SECOND_ENDPOINT = "wss://statemine-rpc-tn.dwellir.com";
 
@@ -51,8 +51,13 @@ function TestConnect() {
   const [chain, setChain] = useState();
   const [nodeName, setNodeName] = useState();
 
-  const handleModal = () => setShowModal(!showModal);
+  const kickOff = async () => {
+    const wsProvider = new WsProvider(GM_WEB_SOCKET);
+      const api = await ApiPromise.create({ provider: wsProvider });
+      setApi(api);
+  };
 
+  const handleModal = () => setShowModal(!showModal);
 
   const handleConnection = async () => {
     const extensions = await web3Enable(NAME);
@@ -72,39 +77,35 @@ function TestConnect() {
     setAccounts(allAccounts);
 
     setShowModal(showModal);
-    };
-    
+  };
 
-     const handleAccountSelection = async (e) => {
-       const selectedAddress = e.target.value;
+  const handleAccountSelection = async (e) => {
+    const selectedAddress = e.target.value;
 
-       const account = accounts.find(
-         (account) => account.address === selectedAddress
-       );
+    const account = accounts.find(
+      (account) => account.address === selectedAddress
+    );
 
-       if (!account) {
-         throw Error("NO_ACCOUNT_FOUND");
-       }
+    if (!account) {
+      throw Error("NO_ACCOUNT_FOUND");
+    }
 
-       setSelectedAccount(account);
-    };
-    
-     useEffect(() => {
-       if (!api) return;
-       if (!selectedAccount) return;
+    setSelectedAccount(account);
+  };
 
-       api.query.system.account(
-         selectedAccount.address,
-         ({ data: { free } }) => {
-           setBalance(free);
-         }
-       );
+  useEffect(() => {
+    if (!api) return;
+    if (!selectedAccount) return;
 
-       setAddress(selectedAccount.address);
-       // console.log(balance);
-     }, [api, selectedAccount, setBalance]);
+    api.query.system.account(selectedAccount.address, ({ data: { free } }) => {
+      setBalance(free);
+    });
+      
+      kickOff();
 
- 
+    setAddress(selectedAccount.address);
+    // console.log(balance);
+  }, [api, selectedAccount, setBalance]);
 
   return (
     <div>
@@ -215,7 +216,7 @@ function TestConnect() {
 
           <div>
             <span>Your current balance is :</span>
-            <span>{balance.toString()}</span>
+            <span>{balance}</span>
           </div>
 
           {balance > 0 ? (

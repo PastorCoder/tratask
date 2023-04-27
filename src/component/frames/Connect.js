@@ -33,9 +33,9 @@ import "../styles/connect.css";
 
 const NAME = "GmOrDie";
 const period = "MORNING | NIGHT | MIDONE | MIDTWO";
-const AMOUNT = 0
+const AMOUNT = 0;
 // const AMOUNT = new BN(10).mul(new BN(10).pow(new BN(10)));
-const GM_WEB_SUCKET = "wss://ws.gm.bldnodes.org/";
+const GM_WEB_SOCKET = "wss://ws.gm.bldnodes.org/";
 const WS_SECOND_ENDPOINT = "wss://rpc.polkadot.io";
 // const WS_SECOND_ENDPOINT = "wss://statemine-rpc-tn.dwellir.com";
 
@@ -54,7 +54,7 @@ function Connect() {
   const handleModal = () => setShowModal(!showModal);
 
   const setup = async () => {
-    const wsProvider = new WsProvider(GM_WEB_SUCKET);
+    const wsProvider = new WsProvider(GM_WEB_SOCKET);
     const api = await ApiPromise.create({ provider: wsProvider });
     setApi(api);
     // console.log(api);
@@ -87,8 +87,6 @@ function Connect() {
     setShowModal(showModal);
   };
 
-  
-
   const handleTalisman = () => {
     const installedWallets = getWallets().filter((wallet) => wallet.installed);
     const talismanWallet = installedWallets.find(
@@ -120,19 +118,17 @@ function Connect() {
   };
 
   const handleDisconnect = async () => {
-    const provider = new WsProvider(GM_WEB_SUCKET);
+    const provider = new WsProvider(GM_WEB_SOCKET);
     const api = await ApiPromise.create({ provider });
 
     const signer = provider.getSigner();
     await signer.disconnect();
   };
 
- 
-
   useEffect(() => {
     // console.log(AMOUNT.toString());
     setup();
-    console.log("address is :", address)
+    console.log("address is :", address);
   }, [address]);
 
   // address is : 5DaEWa1fgLCQtUzNpAKrCxdjwfzuVaXgjbJNpr2CKR4WCnb9
@@ -170,7 +166,7 @@ function Connect() {
   }, [api, selectedAccount, setBalance]);
 
   async function main() {
-    const provider = new WsProvider(GM_WEB_SUCKET);
+    const provider = new WsProvider(GM_WEB_SOCKET);
     const api = await ApiPromise.create({ provider });
 
     // Set the address to monitor balance changes
@@ -303,7 +299,7 @@ function Connect() {
 
           <div>
             <span>Your current balance is :</span>
-            <span>{ balance.toString()}</span>
+            <span>{balance.toString()}</span>
           </div>
 
           {balance > 0 ? (
