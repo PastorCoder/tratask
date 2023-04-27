@@ -36,7 +36,7 @@ const period = "MORNING | NIGHT | MIDONE | MIDTWO";
 const AMOUNT = 0;
 // const AMOUNT = new BN(10).mul(new BN(10).pow(new BN(10)));
 const GM_WEB_SOCKET = "wss://ws.gm.bldnodes.org/";
-const WS_SECOND_ENDPOINT = "wss://rpc.polkadot.io";
+const POLKADOT_WS = "wss://rpc.polkadot.io";
 // const WS_SECOND_ENDPOINT = "wss://statemine-rpc-tn.dwellir.com";
 
 function TestConnect() {
@@ -110,7 +110,7 @@ function TestConnect() {
 
   useEffect(() => {
      const setup = async () => {
-       const wsProvider = new WsProvider(GM_WEB_SOCKET);
+       const wsProvider = new WsProvider(POLKADOT_WS);
        const api = await ApiPromise.create({ provider: wsProvider });
        setApi(api);
      };
