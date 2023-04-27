@@ -51,11 +51,11 @@ function TestConnect() {
   const [chain, setChain] = useState();
   const [nodeName, setNodeName] = useState();
 
-  const kickOff = async () => {
-    const wsProvider = new WsProvider(GM_WEB_SOCKET);
-      const api = await ApiPromise.create({ provider: wsProvider });
-      setApi(api);
-  };
+//   const kickOff = async () => {
+//     const wsProvider = new WsProvider(GM_WEB_SOCKET);
+//       const api = await ApiPromise.create({ provider: wsProvider });
+//       setApi(api);
+//   };
 
   const handleModal = () => setShowModal(!showModal);
 
@@ -101,7 +101,7 @@ function TestConnect() {
       setBalance(free);
     });
       
-      kickOff();
+    //   kickOff();
 
     setAddress(selectedAccount.address);
     // console.log(balance);
