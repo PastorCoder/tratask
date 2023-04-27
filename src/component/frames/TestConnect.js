@@ -101,11 +101,23 @@ function TestConnect() {
       setBalance(free);
     });
       
-    //   kickOff();
 
     setAddress(selectedAccount.address);
     // console.log(balance);
   }, [api, selectedAccount, setBalance]);
+
+    
+
+  useEffect(() => {
+     const setup = async () => {
+       const wsProvider = new WsProvider(GM_WEB_SOCKET);
+       const api = await ApiPromise.create({ provider: wsProvider });
+       setApi(api);
+     };
+  }, []);
+
+
+    
 
   return (
     <div>
